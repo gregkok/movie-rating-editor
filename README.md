@@ -8,4 +8,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## json-server server
 
-Run `json-server db.jsom`. Database will run on `http://localhost:3000/movies`
+Run `json-server db.json`. Database will run on `http://localhost:3000/movies`
