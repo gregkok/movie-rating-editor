@@ -1,0 +1,4 @@
+<app-header color="primary" (movies)="onMovies($event)"></app-header>
+<app-form (movies)="onMovies($event)"></app-form>
+<mat-divider></mat-divider>
+<app-movie-grid [movies] = "movies"></app-movie-grid>

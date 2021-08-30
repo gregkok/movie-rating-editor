@@ -1,0 +1,19 @@
+.form-container {
+    padding-top: 33px;
+}
+
+.form-container,
+mat-card {
+    max-width: 50%;
+    margin: auto;
+    padding-bottom: 1rem;
+}
+
+mat-form-field,
+input {
+    width: 100%
+}
+
+.input-field {
+    padding-top: 10px;
+}
