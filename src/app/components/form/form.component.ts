@@ -27,7 +27,7 @@ export class FormComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.destroy$.next();
-}
+  }
 
   onSubmitSearch(form: NgForm) {
     const formQuery: string = form.value.userSearchQuery;
@@ -40,7 +40,7 @@ export class FormComponent implements OnDestroy {
     }, error => {
       this.isDisabled = false;
       console.log("error", error);
-  })
+    })
   }
 
   resetForm(form: NgForm) {

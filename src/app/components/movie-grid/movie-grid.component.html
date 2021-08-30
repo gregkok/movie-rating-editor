@@ -1,20 +1,20 @@
 <mat-grid-list cols="4" rowHeight="1:2" *ngIf="!isEmpty">
-    <mat-grid-tile *ngFor="let movie of movies">
-      <mat-card>
-        <mat-card-header mat-grid-tile-header>
-          <mat-card-title>{{movie.name}}</mat-card-title>
-          <mat-card-subtitle>Year: {{ movie.year }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list role="list">
-            <mat-list-item role="listitem">Genre: {{movie.genre}}</mat-list-item>
-            <mat-list-item role="listitem">Rating: {{movie.rating}}</mat-list-item>
-          </mat-list>
-        </mat-card-content>
-        <mat-card-actions>
-          <button color="primary" mat-raised-button (click)="onEditRating(movie)">RATE MOVIE</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+  <mat-grid-tile *ngFor="let movie of movies">
+    <mat-card>
+      <mat-card-header mat-grid-tile-header>
+        <mat-card-title>{{movie.name}}</mat-card-title>
+        <mat-card-subtitle>Year: {{ movie.year }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item role="listitem">Genre: {{movie.genre}}</mat-list-item>
+          <mat-list-item role="listitem">Rating: {{movie.rating}}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button color="primary" mat-raised-button (click)="onEditRating(movie)">RATE MOVIE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
 </mat-grid-list>
 <mat-card *ngIf="isEmpty">Oops! seems like your search did not match any movies. Try again.</mat-card>

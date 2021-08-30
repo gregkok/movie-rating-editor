@@ -1,7 +1,10 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogData, ratingRange } from 'src/app/appCostants';
 import { EditRatingDialog } from '../editRatingDialog/editRatingDialog.component';
+
+const px400 = "400px";
+const cancelEdit = "cancelEdit";
 
 @Component({
   selector: 'app-movie-grid',
@@ -11,7 +14,7 @@ import { EditRatingDialog } from '../editRatingDialog/editRatingDialog.component
 export class MovieGridComponent implements OnInit, OnChanges {
   @Input()
   movies = [];
-  
+
   showEditSubmit = false;
   showRatingSelect = false;
   ratingRange = ratingRange;
@@ -26,7 +29,7 @@ export class MovieGridComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if(this.movies.length === 0) {
+    if (this.movies.length === 0) {
       this.isEmpty = true;
     } else {
       this.isEmpty = false;
@@ -35,7 +38,7 @@ export class MovieGridComponent implements OnInit, OnChanges {
 
   onEditRating(movie: DialogData) {
     const dialogRef = this.dialog.open(EditRatingDialog, {
-      width: '400px',
+      width: px400,
       data: {
         id: movie.id,
         name: movie.name,
@@ -45,8 +48,8 @@ export class MovieGridComponent implements OnInit, OnChanges {
       }
     });
     dialogRef.afterClosed().subscribe((result: any) => {
-      
-      this.movies = result === "cancelEdit" ? this.movies : result;
+
+      this.movies = result === cancelEdit ? this.movies : result;
     });
   }
 };

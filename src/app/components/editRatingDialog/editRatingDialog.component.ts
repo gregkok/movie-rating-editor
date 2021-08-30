@@ -20,9 +20,9 @@ export class EditRatingDialog implements OnDestroy {
         @Inject(MAT_DIALOG_DATA) public data,
         private httpClientService: HttpClientService) { }
 
-        ngOnDestroy() {
-            this.destroy$.next();
-        }
+    ngOnDestroy() {
+        this.destroy$.next();
+    }
 
     patchMovie() {
         this.httpClientService.patch(this.data.id, this.selected).pipe(takeUntil(this.destroy$)).subscribe(response => {

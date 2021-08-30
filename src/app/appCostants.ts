@@ -15,4 +15,4 @@ export interface DialogData {
     genre: string
     rating: string;
     cast?: [];
-  }
+}

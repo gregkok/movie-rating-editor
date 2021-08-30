@@ -11,7 +11,7 @@ import { HttpClientService } from 'src/app/Services/httpClient.service';
 export class HeaderComponent implements OnDestroy {
     @Output()
     movies = new EventEmitter<any>();
-    
+
     private destroy$: Subject<void> = new Subject<void>()
 
     moviesArray: Object[];
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnDestroy {
     }
 
     showAllMovies() {
-        if(this.moviesArray?.length !== 1000) {
+        if (this.moviesArray?.length !== 1000) {
             this.isDisabled = true;
             this.httpClientService.get().pipe(takeUntil(this.destroy$)).subscribe((response: []) => {
                 this.moviesArray = response;
@@ -36,6 +36,6 @@ export class HeaderComponent implements OnDestroy {
                 this.error = error;
             });
         }
-        
+
     }
 }

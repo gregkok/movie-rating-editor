@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { and, backslash, queryCode, questionMark, rating, rootUrl, spaceCode } from '../appCostants';
 
 @Injectable()
@@ -27,7 +26,7 @@ export class HttpClientService {
             finalUrl = rootUrl + queryCode + adjustedQuery + and + rating + selectedRating;
         } else if (selectedRating) {
             finalUrl = rootUrl + questionMark + rating + selectedRating
-        } else if(query) {
+        } else if (query) {
             adjustedQuery = this.adjustQueryString(query);
             finalUrl = rootUrl + queryCode + adjustedQuery
         }
