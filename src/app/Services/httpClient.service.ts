@@ -14,7 +14,7 @@ export class HttpClientService {
 
     getById(id: number) {
         let finalUrl: string;
-        finalUrl = rootUrl + backslash + id.toString(2);
+        finalUrl = rootUrl + backslash + id;
         return this.http.get(finalUrl);
     }
 
