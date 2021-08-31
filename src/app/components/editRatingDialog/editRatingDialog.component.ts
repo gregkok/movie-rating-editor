@@ -2,7 +2,7 @@ import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ratingRange } from 'src/app/appCostants';
+import { cancelEdit, ratingRange } from 'src/app/appCostants';
 import { HttpClientService } from 'src/app/Services/httpClient.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class EditRatingDialog implements OnDestroy {
 
     selected: string;
     ratingRange = ratingRange;
+    cancelEdit = cancelEdit;
 
     constructor(
         public dialogRef: MatDialogRef<EditRatingDialog>,
@@ -26,7 +27,7 @@ export class EditRatingDialog implements OnDestroy {
 
     patchMovie() {
         this.httpClientService.patch(this.data.id, this.selected).pipe(takeUntil(this.destroy$)).subscribe(response => {
-            this.httpClientService.get(this.data.id).pipe(takeUntil(this.destroy$)).subscribe(secondResposne => {
+            this.httpClientService.getById(this.data.id).pipe(takeUntil(this.destroy$)).subscribe(secondResposne => {
                 this.dialogRef.close([secondResposne]);
             }, error => {
                 console.log(error);
@@ -37,7 +38,7 @@ export class EditRatingDialog implements OnDestroy {
     }
 
     onEditCancel() {
-        this.dialogRef.close("cancelEdit");
+        this.dialogRef.close(cancelEdit);
     }
 
 }

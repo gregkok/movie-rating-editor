@@ -1,10 +1,10 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogData, ratingRange } from 'src/app/appCostants';
+import { cancelEdit, DialogData, ratingRange } from 'src/app/appCostants';
 import { EditRatingDialog } from '../editRatingDialog/editRatingDialog.component';
 
 const px400 = "400px";
-const cancelEdit = "cancelEdit";
+
 
 @Component({
   selector: 'app-movie-grid',
@@ -48,8 +48,7 @@ export class MovieGridComponent implements OnInit, OnChanges {
       }
     });
     dialogRef.afterClosed().subscribe((result: any) => {
-
-      this.movies = result === cancelEdit ? this.movies : result;
+      this.movies = result === cancelEdit || result === undefined ? this.movies : result;
     });
   }
 };

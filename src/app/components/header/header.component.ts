@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HttpClientService } from 'src/app/Services/httpClient.service';
@@ -25,17 +25,15 @@ export class HeaderComponent implements OnDestroy {
     }
 
     showAllMovies() {
-        if (this.moviesArray?.length !== 1000) {
-            this.isDisabled = true;
-            this.httpClientService.get().pipe(takeUntil(this.destroy$)).subscribe((response: []) => {
-                this.moviesArray = response;
-                this.movies.emit(this.moviesArray);
-                this.isDisabled = false;
-            }, error => {
-                console.log(error);
-                this.error = error;
-            });
-        }
+        this.isDisabled = true;
+        this.httpClientService.getAllMovies().pipe(takeUntil(this.destroy$)).subscribe((response: Object[]) => {
+            this.moviesArray = response;
+            this.movies.emit(this.moviesArray);
+            this.isDisabled = false;
+        }, error => {
+            console.log(error);
+            this.error = error;
+        });
 
     }
 }

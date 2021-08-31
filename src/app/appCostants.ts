@@ -7,6 +7,7 @@ export const rating = "rating="
 export const and = "&";
 export const questionMark = "?"
 export const errorMessage = "Something went wrong, please try again";
+export const cancelEdit = "cancelEdit";
 
 export interface DialogData {
     id: number;

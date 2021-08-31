@@ -8,13 +8,13 @@ export class HttpClientService {
 
     constructor(private http: HttpClient) { }
 
-    get(id?: string): Observable<any> {
+    getAllMovies(): Observable<any> {
+        return this.http.get(rootUrl);
+    }
+
+    getById(id: number) {
         let finalUrl: string;
-        if (id) {
-            finalUrl = rootUrl + backslash + id;
-        } else {
-            finalUrl = rootUrl;
-        }
+        finalUrl = rootUrl + backslash + id.toString(2);
         return this.http.get(finalUrl);
     }
 
